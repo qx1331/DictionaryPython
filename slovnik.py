@@ -1,6 +1,6 @@
 txt = input("Ввести текст: ").lower()
-txt = txt.replace(",", "")
-txt = txt.replace(".", "")
+txt = txt.replace(",", "").replace(".", "")
+
 
 ###################
 def sorted(text):
@@ -10,8 +10,7 @@ def sorted(text):
     for i in a:
         if len(i) > 3:
             spis.append(i)
-    spis = set(spis)
-    spis = list(spis)
+    spis = list(set(spis))
     spis.sort()
     b = "\n".join(spis)
     return b
@@ -20,8 +19,7 @@ def sorted(text):
 ###########
 def maxlen(text):
     text = text.split()
-    text = set(text)
-    text = list(text)
+    text = list(set(text))
     text.sort(key=len)
     text.reverse()
     for i in text[0:5]:
