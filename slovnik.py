@@ -19,14 +19,14 @@ def sorted(text):
 
 ###########
 def maxlen(text):
-
     text = text.split()
     text = set(text)
     text = list(text)
     text.sort(key=len)
     text.reverse()
-    return "\n".join(text[0:5])
-
+    for i in text[0:5]:
+        print(i, "-", len(i), "символiв")
+    return ""
 
 ###########
 def maxfreq(List):
@@ -40,7 +40,7 @@ def maxfreq(List):
     for i in range(List.count(word)):
         txt.remove(word)
 
-    return word
+    return word + " - " + str(count) + " раза (-рази)"
 
 
 ############
