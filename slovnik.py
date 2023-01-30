@@ -1,56 +1,53 @@
+from collections import Counter
+
 txt = input("Ввести текст: ").lower()
 txt = txt.replace(",", "").replace(".", "")
 
-
-###################
 def sorted(text):
-
-    a = text.split()
-    spis = []
-    for i in a:
+    List = []
+    for i in text.split():
         if len(i) > 3:
-            spis.append(i)
-    spis = list(set(spis))
-    spis.sort()
-    b = "\n".join(spis)
-    return b
+            List.append(i)
+    List = list(set(List))
+    List.sort()
+    joined = "\n".join(List)
+    return joined
 
 
-###########
 def maxlen(text):
     text = text.split()
     text = list(set(text))
     text.sort(key=len)
     text.reverse()
     for i in text[0:5]:
-        print(i, "-", len(i), "символiв")
+        print(f'{i} - {len(i)} characters')
     return ""
 
-###########
-def maxfreq(List):
-    count = 0
-    word = List[0]
-    for i in List:
-        cur = List.count(i)
-        if cur > count and len(i) > 3:
-            count = cur
-            word = i
-    for i in range(List.count(word)):
-        txt.remove(word)
+def most_common_words(text):
+    symb = '!@#$%^&*().,/\|`~"№;:?-+_'
+    for i in text:
+        if i in symb:
+            text = text.replace(i, '')
+    text = text.split()
+    newtxt=[]
+    for w in text:
+        if len(w) > 3:
+            newtxt.append(w)
+    most_common_el = Counter(newtxt).most_common(5)
+    for i in most_common_el:
+        print(f'{i[0]} - {i[1]} times')
+    return ''
 
-    return word + " - " + str(count) + " раза (-рази)"
 
-
-############
 uin = int(input(
-    "Введiть дiю:\n1. Сортувати слова за алфавітом\n2. Топ 5 найдовших слiв\n3. Топ 5 найчастiше повторюваних слiв\n\t"))
+    "Введiть дiю:\n"
+    "1. Сортувати слова за алфавітом\n"
+    "2. Топ 5 найдовших слiв\n"
+    "3. Топ 5 найчастiше повторюваних слiв\n\t"))
+
 if uin == 1:
     print(sorted(txt))
 elif uin == 2:
     print(maxlen(txt))
 elif uin == 3:
-    while True:
-        txt = txt.split()
-        for i in range(5):
-            print(maxfreq(txt))
-        break
+    print(most_common_words(txt))
