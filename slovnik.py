@@ -1,6 +1,6 @@
 from collections import Counter
 
-txt = input("Ввести текст: ").lower()
+txt = input("Enter text: ").lower()
 txt = txt.replace(",", "").replace(".", "")
 
 def sorted(text):
@@ -40,10 +40,10 @@ def most_common_words(text):
 
 
 uin = int(input(
-    "Введiть дiю:\n"
-    "1. Сортувати слова за алфавітом\n"
-    "2. Топ 5 найдовших слiв\n"
-    "3. Топ 5 найчастiше повторюваних слiв\n\t"))
+    "An action?:\n"
+    "1. Sort by alphabet\n"
+    "2. Top 5 longest words in text\n"
+    "3. Top 5 most common words\n\t"))
 
 if uin == 1:
     print(sorted(txt))
